@@ -1,74 +1,47 @@
 package com.lonkwick.lonkwickadmin.service;
 
-import com.lonkwick.lonkwickadmin.dto.PmsProductParam;
-import com.lonkwick.lonkwickadmin.dto.PmsProductQueryParam;
-import com.lonkwick.lonkwickadmin.dto.PmsProductResult;
-//import com.lonkwick.lonkwickadmin.model.*;
-import com.lonkwick.lonkwickadmin.model.PmsProduct;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import com.lonkwick.lonkwickadmin.entity.PmsProduct;
 
 import java.util.List;
 
 /**
- * 商品管理Service
- * Created by macro on 2018/4/26.
+ * (PmsProduct 表服务接口）
+ * @author Wick
+ * @version 1.0
+ * @date 2020/10/31 0:45
  */
 public interface PmsProductService {
-    /**
-     * 创建商品
-     */
-    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-    int create(PmsProductParam productParam);
 
     /**
-     * 根据商品编号获取更新信息
+     * 通过brand_id查询单挑数据
+     * @param brand_id
+     * @return 实例对象
      */
-    PmsProductResult getUpdateInfo(Long id);
+
+    PmsProduct queryById(Integer brand_id);
 
     /**
-     * 更新商品
+     * 查询多条数据
+     * @param offset
+     * @param limit
+     * @return 对象列表
      */
-    @Transactional
-    int update(Long id, PmsProductParam productParam);
+
+    List<PmsProduct> queryAllByLimit(int offset, int limit);
+
 
     /**
-     * 分页查询商品
+     * 新增商品
+     * @param pmsProduct
+     * @return 实例对象
      */
-    List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum);
+     PmsProduct addPmsProduct(PmsProduct pmsProduct);
 
-    /**
-     * 批量修改审核状态
-     * @param ids 产品id
-     * @param verifyStatus 审核状态
-     * @param detail 审核详情
-     */
-    @Transactional
-    int updateVerifyStatus(List<Long> ids, Integer verifyStatus, String detail);
+    PmsProduct updatePmsProduct(PmsProduct pmsProduct);
 
-    /**
-     * 批量修改商品上架状态
-     */
-    int updatePublishStatus(List<Long> ids, Integer publishStatus);
+    boolean deleteById(Integer brand_id);
 
-    /**
-     * 批量修改商品推荐状态
-     */
-    int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
+    List<PmsProduct> queryAllPmsProduct(PmsProduct pmsProduct);
 
-    /**
-     * 批量修改新品状态
-     */
-    int updateNewStatus(List<Long> ids, Integer newStatus);
-
-    /**
-     * 批量删除商品
-     */
-    int updateDeleteStatus(List<Long> ids, Integer deleteStatus);
-
-    /**
-     * 根据商品名称或者货号模糊查询
-     */
-    List<PmsProduct> list(String keyword);
+    List<PmsProduct> countPmsProduct(PmsProduct pmsProduct);
 }

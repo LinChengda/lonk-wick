@@ -1,8 +1,7 @@
 package com.lonkwick.lonkwickadmin.dto;
 
-import com.lonkwick.lonkwickadmin.model.PmsProduct;
+import com.lonkwick.lonkwickadmin.entity.PmsProduct;
 import com.lonkwick.lonkwickadmin.model.PmsProductLadder;
-import com.lonkwick.lonkwickadmin.model.*;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
