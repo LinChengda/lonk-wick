@@ -30,7 +30,7 @@ public class PmsProductController {
 
 
     @ApiOperation(value = "根据id查询")
-    @GetMapping("queryPmsProductById")  //
+    @GetMapping("queryPmsProductById")  //这个注释是说明前端可以通过这个接口来调用queryPmsProductById方法
     public BaseResult<PmsProduct> queryPmsProductById (Integer brand_id){return ResultUtil.success(pmsProductService.queryById(brand_id));}
 
 //    @ApiOperation(value = "查询所有商品")
@@ -45,7 +45,7 @@ public class PmsProductController {
 //    public BaseResult<PmsProduct> addPmsProduct(PmsProduct pmsProduct){
 //        return ResultUtil.success(PmsProductService.addPmsProduct(pmsProduct));
 //    }
-    @ApiOperation(value = "根据id查询")
+    @ApiOperation(value = "添加商品")
     @GetMapping("addPmsProduct")
     public BaseResult<PmsProduct> addPmsProduct(PmsProduct pmsProduct){
         return ResultUtil.success(pmsProductService.addPmsProduct(pmsProduct));
